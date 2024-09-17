@@ -9,26 +9,46 @@
     <h1>Comparar Alumnos entre Materias</h1>
     
     <label for="materia1">Materia 1:</label>
-    <input type="number" id="materia1" name="materia1"><br><br>
+    <input type="number" id="materia1" name="materia1" min="1" max="100" step="1"><br><br>
     
     <label for="materia2">Materia 2:</label>
-    <input type="number" id="materia2" name="materia2"><br><br>
+    <input type="number" id="materia2" name="materia2" min="1" max="100" step="1"><br><br>
     
     <button onclick="validarAlumnos()">Validar</button>
 </body>
 <script>
     function validarAlumnos() {
-        // aca uso elementos del DOM para obtener los valores de las materias
-        var materia1 = parseInt(document.getElementById('materia1').value);
-        var materia2 = parseInt(document.getElementById('materia2').value);
+        // Obtenemos los valores con DOM
+        var materia1 = document.getElementById('materia1').value;
+        var materia2 = document.getElementById('materia2').value;
 
-        // veo cual tiene mas alumnos
+        // Verificamos enteros
+        if (!Number.isInteger(parseFloat(materia1)) || !Number.isInteger(parseFloat(materia2))) {
+            alert("Por favor, ingresa valores enteros en ambas materias.");
+            return;
+        }
+
+        // Convertimos los valores a enteros
+        materia1 = parseInt(materia1);
+        materia2 = parseInt(materia2);
+
+        // Validamos que no sean valores menores a 1 y que no excedan 100
+        if (materia1 < 1 || materia2 < 1) {
+            alert("La cantidad de alumnos no puede ser menor que 1.");
+            return;
+        }
+        if (materia1 > 100 || materia2 > 100) {
+            alert("La cantidad de alumnos no puede ser mayor que 100.");
+            return;
+        }
+
+        // Validar cuál tiene más alumnos
         if (materia1 > materia2) {
             alert("Materia 1 tiene más alumnos.");
         } else if (materia1 < materia2) {
-            alert("Materia 2 tiene más alumnos.");//informo
+            alert("Materia 2 tiene más alumnos.");
         } else {
-            alert("Ambas materias tienen la misma cantidad de alumnos.");//informo
+            alert("Ambas tienen la misma cantidad de alumnos.");
         }
     }
 </script>
