@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>Comparar Cantidad Alumnos</title>
+    
+</head>
+<body>
+    <h1>Comparar Alumnos entre Materias</h1>
+    
+    <label for="materia1">Materia 1:</label>
+    <input type="number" id="materia1" name="materia1"><br><br>
+    
+    <label for="materia2">Materia 2:</label>
+    <input type="number" id="materia2" name="materia2"><br><br>
+    
+    <button onclick="validarAlumnos()">Validar</button>
+</body>
+<script>
+    function validarAlumnos() {
+        // aca uso elementos del DOM para obtener los valores de las materias
+        var materia1 = parseInt(document.getElementById('materia1').value);
+        var materia2 = parseInt(document.getElementById('materia2').value);
+
+        // veo cual tiene mas alumnos
+        if (materia1 > materia2) {
+            alert("Materia 1 tiene más alumnos.");
+        } else if (materia1 < materia2) {
+            alert("Materia 2 tiene más alumnos.");//informo
+        } else {
+            alert("Ambas materias tienen la misma cantidad de alumnos.");//informo
+        }
+    }
+</script>
+</html>
